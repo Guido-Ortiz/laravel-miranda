@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+// './seed.sql'
+\DB::unprepared(file_get_contents('../../seed.sql'));
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
