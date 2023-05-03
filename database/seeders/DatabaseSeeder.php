@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 // './seed.sql'
-\DB::unprepared(file_get_contents('../../seed.sql'));
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,6 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
+        
+        \DB::unprepared(file_get_contents('./seed.sql'));
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
