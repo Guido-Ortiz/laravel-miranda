@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/rooms', [RoomsController::class, 'store']);
+
+Route::get('/roomdetails/{id}', [RoomsController::class, 'show']);
+
+Route::get('/offers', [RoomsController::class, 'showOffers']);
