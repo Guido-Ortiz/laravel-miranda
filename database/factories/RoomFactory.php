@@ -14,32 +14,17 @@ class RoomsFactory extends Factory
      *
      *  @var string
      */
-    protected $model = Rooms::class;
-    
-    $discount= 0;
-    if ($offer === "Yes") {
-      $discount => fake()->number({min: 0, max: 80});
-    } else {
-      $discount = 0;
-    }
-  
-    $room_offer= null;
-    if ($offer === "Yes") {
-      $room_offer = $price - ($discount * $price) / 100;
-    } else {
-      $room_offer = null;
-    }
     
     public function definition(): array
     {
         return [  
             'type'=> fake()->randomElement(["Single Bed", "Double Bed", "Double Superior", "Suite",]),
             'number' => fake()->number({ min: 10, max: 1000 }),
-            'discountPercentage'=> $discount,
+            'discountPercentage'=> fake()->number({min: 0, max: 20});,
             'discount'=> fake()->randomElement(["Yes", "No"]);,
             'amenities'=> fake()->text($maxNbChars = 50),
             'price'=> fake()->numberBetween({ $min = 80, $max = 200 });,
-            'offer_price'=> $room_offer,
+            'offer_price'=> $price - ($discount * $price) / 100;,
             'status'=> fake()->randomElement(["Available", "Booked"]),
         ];
     }
