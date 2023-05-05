@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/rooms', [RoomsController::class, 'store']);
+Route::get('/rooms', [RoomsController::class, 'index']);
 
 Route::get('/roomdetails/{id}', [RoomsController::class, 'show']);
 
