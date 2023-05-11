@@ -12,4 +12,9 @@ class ContactController extends Controller
         return view('/details');
     }
 
+    public function store(CreateContactRequest $request){   
+        $input = $request->validated();
+        $contact = Contact::create($input);
+        return redirect('/details');
+    }
 };
