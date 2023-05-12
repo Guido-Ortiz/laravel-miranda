@@ -22,3 +22,8 @@ Route::get('/rooms', [RoomsController::class, 'index']);
 Route::get('/roomdetails/{id}', [RoomsController::class, 'show']);
 
 Route::get('/offers', [RoomsController::class, 'showOffers']);
+
+Route::get("contact", [ContactController::class, "showContact"]);
+Route::post("contact",[ContactController::class, "insertContact"]);
+
+Route::post("/room-list", [RoomController::class, "getRoomsAvailable"]);

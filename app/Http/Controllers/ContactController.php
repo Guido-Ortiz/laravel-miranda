@@ -8,13 +8,23 @@ use App\Http\Requests\CreateContactRequest;
 
 class ContactController extends Controller
 {
-    public function create(){
+    public function showContact(){
         return view('/details');
     }
 
-    public function store(CreateContactRequest $request){   
-        $input = $request->validated();
-        $contact = Contact::create($input);
-        return redirect('/details');
+    public function store(Request $request)
+    {
+        Contact::insertOrIgnore(
+            [
+            "customer" => $request->customer,
+            "date" => date('d-m-Y'),
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "subject" => $request->subject,
+            "comment" => $request->comment
+            ]
+        );
+
+        return redirect("contact");
     }
 };
